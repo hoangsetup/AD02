@@ -1,4 +1,4 @@
-package com.echo.holographlibrary;
+package com.longnd.tracuudiemthi.holographlibrary;
 
 import android.graphics.Color;
 

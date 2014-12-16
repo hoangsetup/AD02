@@ -7,5 +7,8 @@
     <string name="line">Line</string>
     <string name="bar">Bar</string>
     <string name="pie">Pie</string>
+    <string name="xem">Xem</string>
+    <string name="ketqua">Kết quả</string>
+    <string name="bi_u_">Biểu đồ: Phân bố điểm thi theo số thí sinh</string>
 
 </resources>

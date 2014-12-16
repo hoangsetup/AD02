@@ -4,6 +4,7 @@
     android:background="#f0f0f0" >
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -21,17 +22,20 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
             android:weightSum="10" >
 
             <EditText
                 android:id="@+id/editText_keyword"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="9.78"
+                android:layout_weight="10"
                 android:background="@drawable/edittext_bg"
                 android:drawableLeft="@drawable/ic_search"
-                android:ems="100"
-                android:hint="Nhập tên thí sinh" >
+                android:singleLine="true"
+                android:ems="50"
+                android:hint="" >
 
                 <requestFocus />
             </EditText>
@@ -41,9 +45,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_style"
-                android:text="Xem"
+                android:text="@string/xem"
+                android:layout_weight="1"
                 android:textColor="#FFF"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="200"
                 android:gravity="center"
-                android:text="Kết quả"
+                android:text="@string/ketqua"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
@@ -67,11 +72,17 @@
             android:layout_height="1dp"
             android:background="@android:color/darker_gray" />
 
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </ListView>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_kq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="12dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

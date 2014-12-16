@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="textHienthi">
+        <item>Điểm tổng</item>
+        <item>Toán A</item>
+        <item>Lý A</item>
+        <item>Hóa A</item>
+        <item>Toán A1</item>
+        <item>Lý A1</item>
+        <item>Anh A1</item>
+        <item>Hóa A1</item>
+    </string-array>
+    <string-array name="textValue">
+        <item>DiemTong</item>
+        <item>ToanA</item>
+        <item>LyA</item>
+        <item>HoaA</item>
+        <item>ToanA1</item>
+        <item>LyA1</item>
+        <item>AnhA1</item>
+        <item>HoaA1</item>
+    </string-array>
+
+</resources>
