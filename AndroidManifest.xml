@@ -33,15 +33,10 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name="com.longnd.tracuudiemthi.BarActivity"
-            android:hardwareAccelerated="false"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
-        <activity
             android:name="com.longnd.tracuudiemthi.SubBarActivity"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar.MinWidth" />
         <activity android:name="com.longnd.tracuudiemthi.StatisticActivity" >
         </activity>
-        <activity android:name="org.achartengine.GraphicalActivity"></activity>
     </application>
 
 </manifest>

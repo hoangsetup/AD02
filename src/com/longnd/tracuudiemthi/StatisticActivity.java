@@ -122,12 +122,6 @@ public class StatisticActivity extends Activity {
 					dataset, multiRenderer, new String[] { BarChart.TYPE,
 							LineChart.TYPE });
 			
-			// try {
-			// layout = (LinearLayout) findViewById(R.id.chart);
-			// layout.removeAllViewsInLayout();
-			// } catch (Exception ex) {
-			// ex.printStackTrace();
-			// }
 			layout.removeAllViews();
 			layout.addView(view, 0, new LayoutParams(LayoutParams.MATCH_PARENT,
 					LayoutParams.MATCH_PARENT));
@@ -211,8 +205,6 @@ public class StatisticActivity extends Activity {
 
 		@Override
 		protected String doInBackground(String... arg0) {
-			// TODO Auto-generated method stub
-			// TODO Auto-generated method stub
 			try {
 				// Lấy dữ liệu
 				Document document = Jsoup.connect(arg0[0]).timeout(10000).get();
@@ -274,8 +266,6 @@ public class StatisticActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		if (item.getItemId() == R.id.action_bar) {
-			// Khởi chạy activity BarActivity để tạo biểu đồ
-			// Intent intent = new Intent(MainActivity.this, BarActivity.class);
 			Intent intent = new Intent(StatisticActivity.this,
 					SubBarActivity.class);
 			startActivityForResult(intent, 100);
