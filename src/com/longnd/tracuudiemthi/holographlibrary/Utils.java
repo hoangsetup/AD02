@@ -3,7 +3,7 @@ package com.longnd.tracuudiemthi.holographlibrary;
 import android.graphics.Color;
 
 /**
- * Created by sbaiget on 11/04/2014.
+ * 
  */
 public class Utils {
 

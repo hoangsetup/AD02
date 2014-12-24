@@ -11,6 +11,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.StaticLayout;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,6 +39,11 @@ public class MainActivity extends Activity {
 	// Lựa chọn tìm theo tên || số báo danh
 	ArrayAdapter<String> adapterSpinner = null;
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 * Phương thức khởi tạo app bắt buộc cho mỗi ac
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -51,7 +57,7 @@ public class MainActivity extends Activity {
 		editText = (EditText) findViewById(R.id.editText_keyword);
 		button = (Button) findViewById(R.id.button_search);
 
-		//
+		//Khởi tạo dữ liệu cho vào spinner
 		adapterSpinner = new ArrayAdapter<String>(getApplicationContext(),
 				R.layout.spinner_item_list, R.id.textView, new String[] {
 						"Tìm kiếm theo số báo danh", "Tìm kiếm theo tên" });
@@ -62,6 +68,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
+				//arg2 là vị trí của item trong spinner được chọn
 				if (arg2 == 0) {
 					editText.setHint("Nhập số báo danh");
 				} else {
@@ -92,7 +99,11 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	// Tiến trình con, lấy thông tin trả về từ internet
+	/*
+	 * Tiến trình con, lấy thông tin trả về từ internet
+	 * Phải đưa vào 1 tiến trình riêng nếu không sẽ bị trôi, vì việc lấy thông tin
+	 * từ internet mất thời gian quá 1 nhịp lệnh
+	 */
 	public class searchDiemThi extends AsyncTask<String, Void, String> {
 		//Dialog hiện lên trong quá trình chờ
 		private ProgressDialog dialog;
@@ -102,6 +113,7 @@ public class MainActivity extends Activity {
 		protected void onPreExecute() {
 
 			super.onPreExecute();
+			//Khởi tạo dialog và show()
 			dialog = new ProgressDialog(MainActivity.this);
 			dialog.setMessage("Đang tải...");
 			dialog.setCancelable(false);
@@ -128,6 +140,7 @@ public class MainActivity extends Activity {
 					return null;
 				}//Nếu có dữ liệu
 				flag = true;
+				//Trả lại phương thức onPostExecute
 				return res;
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -138,7 +151,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
+			// result là string được trả lại từ phương thức
 			super.onPostExecute(result);
 			// ẩn dialog
 			if (dialog.isShowing()) {
@@ -160,17 +173,20 @@ public class MainActivity extends Activity {
 	//Khởi tạo menu có nut để chuyển vào activity bar
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
+		// Khởi tạo actionBar menu, mẫu trong file res/menu/main.xml
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
+	//Xử lý khi có 1 menu được click
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		//Item xem biểu đồ được lựa chọn
 		if (item.getItemId() == R.id.action_bar) {
-			Intent intent = new Intent(MainActivity.this, BarActivity.class);
+			//Khởi chạy activity BarActivity để tạo biểu đồ
+			//Intent intent = new Intent(MainActivity.this, BarActivity.class);
+			Intent intent = new Intent(MainActivity.this, StatisticActivity.class);
 			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);

@@ -15,7 +15,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,12 +45,24 @@ public class BarActivity extends Activity {
 		barGraph = (BarGraph) findViewById(R.id.graph);
 		textViewTitle = (TextView) findViewById(R.id.textView_title);
 
-		// Khởi tạo hộp thoại lựa chọn tiêu chí vẽ bd
+		// Khởi tạo hộp thoại lựa chọn tiêu chí vẽ bd ngay lúc khởi tạo
 		Intent intent = new Intent(BarActivity.this, SubBarActivity.class);
 		startActivityForResult(intent, 100);
+
+		// Chạm| click vào tên biểu đổ để tạo biểu đổ mới
+		textViewTitle.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(BarActivity.this,
+						SubBarActivity.class);
+				startActivityForResult(intent, 100);
+			}
+		});
 	}
 
-	// Bắt sự kiện khi hộp thoại lựa chọn bị đóng lại
+	// Bắt sự kiện khi hộp thoại lựa chọn bị đóng lại (SubActivity)
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -81,10 +94,13 @@ public class BarActivity extends Activity {
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
+			// Khởi tạo vào show dialog
 			dialog = new ProgressDialog(BarActivity.this);
 			dialog.setMessage("Đang tải...");
 			dialog.setCancelable(false);
 			dialog.show();
+			//Clear bar
+			points = new ArrayList<Bar>();
 		}
 
 		@Override
@@ -114,9 +130,9 @@ public class BarActivity extends Activity {
 					String[] info = result.replace('|', '-').split("-");
 
 					// Tạo màu ngẫu nhiên
+					
 					Random rand = new Random();
 					for (String s : info) {
-						Log.d("barLogS", result);
 						int r = rand.nextInt(255);
 						int g = rand.nextInt(255);
 						int b = rand.nextInt(255);
@@ -138,6 +154,7 @@ public class BarActivity extends Activity {
 					// Vẽ các cột lên biểu đồ
 					barGraph.setBars(points);
 				} else {
+					// Hiện thông báo
 					Toast.makeText(BarActivity.this, "Không có dữ liệu",
 							Toast.LENGTH_LONG).show();
 				}

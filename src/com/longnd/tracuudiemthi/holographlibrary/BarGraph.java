@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -29,16 +30,16 @@ import android.view.animation.LinearInterpolator;
 
 import com.longnd.tracuudiemthi.R;
 
-public class BarGraph extends View implements HoloGraphAnimate {
+@SuppressLint({ "Recycle", "DrawAllocation", "ClickableViewAccessibility" }) public class BarGraph extends View implements HoloGraphAnimate {
 
     private static final int VALUE_FONT_SIZE = 30;
     private static final int AXIS_LABEL_FONT_SIZE = 15;
     // How much space to leave between labels when shrunken. Increase for less space.
     private static final float LABEL_PADDING_MULTIPLIER = 1.6f;
-    private static final int ORIENTATION_HORIZONTAL = 0;
-    private static final int ORIENTATION_VERTICAL = 1;
+    //*private static final int ORIENTATION_HORIZONTAL = 0;
+    //*private static final int ORIENTATION_VERTICAL = 1;
 
-    private final int mOrientation;
+    //*private final int mOrientation;
     private ArrayList<Bar> mBars = new ArrayList<Bar>();
     private Paint mPaint = new Paint();
     private Rect mBoundsRect = new Rect();
@@ -74,7 +75,7 @@ public class BarGraph extends View implements HoloGraphAnimate {
         super(context, attrs, defStyleAttr);
 
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BarGraph);
-        mOrientation = a.getInt(R.styleable.BarGraph_orientation, ORIENTATION_VERTICAL);
+        //*mOrientation = a.getInt(R.styleable.BarGraph_orientation, ORIENTATION_VERTICAL);
         mAxisColor = a.getColor(R.styleable.BarGraph_barAxisColor, Color.LTGRAY);
         mShowAxis = a.getBoolean(R.styleable.BarGraph_barShowAxis, true);
         mShowAxisLabel = a.getBoolean(R.styleable.BarGraph_barShowAxisLabel, true);
@@ -211,7 +212,7 @@ public class BarGraph extends View implements HoloGraphAnimate {
         for (final Bar bar : mBars) {
             int left = (int) ((padding * 2) * count + padding + barWidth * count);
             int right = (int) ((padding * 2) * count + padding + barWidth * (count + 1));
-            int width = (int)(defaultBarWidth + (padding *2));
+            ///*int width = (int)(defaultBarWidth + (padding *2));
             float textWidth = mPaint.measureText(bar.getName());
             // Decrease text size to fit and not overlap with other labels.
             while (right -left + (padding * LABEL_PADDING_MULTIPLIER) < textWidth) {

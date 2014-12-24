@@ -10,5 +10,7 @@
     <string name="xem">Xem</string>
     <string name="ketqua">Kết quả</string>
     <string name="bi_u_">Biểu đồ: Phân bố điểm thi theo số thí sinh</string>
+    <string name="tieuchithongke">Tiêu chí thống kê</string>
+    <string name="btn_xong">Xong</string>
 
 </resources>
